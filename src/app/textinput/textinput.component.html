@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="input-section">
+    <!-- (change)=" onInputLangSelect(inputLangSelect.selectedIndex, inputLangSelect)
+    " (change)="onSubmit(input.value)" #inputLangSelect -->
+
+    <mat-form-field>
+      <mat-label>Input Language</mat-label>
+
+      <mat-select
+        (selectionChange)="onInputLangSelect(inputLangSelect.value)"
+        (change)="onSubmit(input.value)"
+        #inputLangSelect
+      >
+        <mat-option *ngFor="let lang of langs" [value]="lang.value">
+          {{ lang.viewValue }}
+        </mat-option>
+
+        <!-- <mat-option id="ru">Russian</mat-option>
+        <mat-option selected id="en">English</mat-option>
+        <mat-option id="zh">Chinese</mat-option> -->
+      </mat-select>
+    </mat-form-field>
+
+    <!-- <mat-form-field class="translate-input"> -->
+    <textarea
+      placeholder="Type something..."
+      class="translate-input"
+      matInput
+      (keyup)="onSubmit(input.value)"
+      #input
+    ></textarea>
+    <!-- </mat-form-field> -->
+  </div>
+  <div class="output-section">
+    <mat-form-field>
+      <mat-label>Output Language</mat-label>
+
+      <mat-select
+        (selectionChange)="onOutputLangSelect(outputLangSelect.value)"
+        (change)="onSubmit(input.value)"
+        #outputLangSelect
+      >
+        <mat-option *ngFor="let lang of langs" [value]="lang.value">
+          {{ lang.viewValue }}
+        </mat-option>
+
+        <!-- <mat-option id="ru">Russian</mat-option>
+        <mat-option selected id="en">English</mat-option>
+        <mat-option id="zh">Chinese</mat-option> -->
+      </mat-select>
+    </mat-form-field>
+    <!-- <select
+      (change)="
+        onOutputLangSelect(outputLangSelect.selectedIndex, outputLangSelect)
+      "
+      (change)="onSubmit(input.value)"
+      #outputLangSelect
+    >
+      <option></option>
+      <option selected id="ru">Russian</option>
+      <option id="en">English</option>
+      <option id="zh">Chinese</option>
+    </select> -->
+
+    <div class="translation">
+      <span>{{ this.translation }}</span>
+    </div>
+  </div>
+</div>
